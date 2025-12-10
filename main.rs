@@ -99,6 +99,26 @@ struct level {
     player: Cube,
 };
 impl level {
+    fn scaleToScreen(&mut self, screen_width: u32, screen_height: u32) {
+        let scale_x = screen_width as f64 / self.width as f64;
+        let scale_y = screen_height as f64 / self.height as f64;
+        for obstacle in &mut self.obstacles {
+            obstacle.p1.x *= scale_x;
+            obstacle.p1.y *= scale_y;
+            obstacle.p2.x *= scale_x;
+            obstacle.p2.y *= scale_y;
+        };
+        for enemy in &mut self.enemies {
+            enemy.rect.p1.x *= scale_x;
+            enemy.rect.p1.y *= scale_y;
+            enemy.rect.p2.x *= scale_x;
+            enemy.rect.p2.y *= scale_y;
+        };
+        self.player.rect.p1.x *= scale_x;
+        self.player.rect.p1.y *= scale_y;
+        self.player.rect.p2.x *= scale_x;
+        self.player.rect.p2.y *= scale_y;
+    };
     fn update(&mut self, dt: f64) {
         for enemy in &mut self.enemies {
             enemy.update(dt);
