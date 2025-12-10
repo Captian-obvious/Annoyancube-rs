@@ -7,4 +7,4 @@ struct Point {
 };
 fn main() {
     println!("A position is: {}", Point { x: 10, y: 20});
-}
+};
