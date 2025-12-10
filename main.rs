@@ -2,59 +2,70 @@
 use std::fmt;
 use std::vec::Vec;
 #[derive(Debug, Clone,Eq,Copy,PartialEq)]
-struct Point {
+pub struct Point {
     x: f64,
     y: f64,
 };
 impl Point {
-    fn origin() -> Point {
+    pub fn origin() -> Point {
         Point { x: 0.0, y: 0.0 }
     };
-    fn new(x: f64, y: f64) -> Point {
+    pub fn new(x: f64, y: f64) -> Point {
         Point { x: x, y: y };
     };
-    fn distance(&self, other: &Point) -> f64 {
+    pub fn distance(&self, other: &Point) -> f64 {
         let dx = self.x - other.x;
         let dy = self.y - other.y;
         (dx * dx + dy * dy).sqrt()
     };
-    fn Display(&self, f: &mut fmt::Formatter) -> fmt::Result {
+    pub fn Display(&self, f: &mut fmt::Formatter) -> fmt::Result {
         write!(f, "({0}, {1})", self.x, self.y)
     };
 };
 #[derive(Debug, Clone,Eq,Copy,PartialEq)]
-struct Rectangle {
+pub struct Rectangle {
     p1: Point,
     p2: Point,
     rotation: f64,
 };
 impl Rectangle {
-    fn area(&self) -> f64 {
+    pub fn area(&self) -> f64 {
         let width = (self.p1.x - self.p2.x).abs();
         let height = (self.p1.y - self.p2.y).abs();
         width * height
     };
-    fn perimeter(&self) -> f64 {
+    pub fn perimeter(&self) -> f64 {
         let width=(self.p1.x - self.p2.x).abs();
         let height=(self.p1.y - self.p2.y).abs();
         2.0 * (width + height)
     };
-    fn onCollide(&self, other: &Rectangle) -> bool {
+    pub fn onCollide(&self, other: &Rectangle) -> bool {
         !(self.p1.x > other.p2.x || self.p2.x < other.p1.x ||
           self.p1.y > other.p2.y || self.p2.y < other.p1.y)
     };
-    fn draw(&self) {
+    pub fn draw(&self) {
         // placeholder for drawing logic
     };
 };
 #[derive(Debug, Clone,Eq,Copy,PartialEq)]
-struct Cube {
+pub struct Cube {
     rect: Rectangle,
     velocity: Point,
     health: f64,
 };
 impl Cube { //this is the player character, also its a square
-    fn update(&mut self, dt: f64) {
+    pub fn create(x: f64, y: f64, size: f64) -> Cube {
+        Cube {
+            rect: Rectangle {
+                p1: Point { x: x, y: y },
+                p2: Point { x: x + size, y: y + size },
+                rotation: 0.0,
+            },
+            velocity: Point { x: 0.0, y: 0.0 },
+            health: 100.0,
+        }
+    };
+    pub fn update(&mut self, dt: f64) {
         // update position based on velocity, gravity, wind resistance, etc.
         self.rect.p1.x += self.velocity.x * dt;
         self.rect.p1.y += self.velocity.y * dt;
@@ -77,7 +88,7 @@ impl Cube { //this is the player character, also its a square
         // draw the cube
         self.rect.draw();
     };
-    fn updateCollision(&mut self, other: &Rectangle) {
+    pub fn updateCollision(&mut self, other: &Rectangle) {
         if self.rect.onCollide(other) {
             // collision response: stop movement depending on direction
             if self.velocity.y < 0.0 {
@@ -92,7 +103,7 @@ impl Cube { //this is the player character, also its a square
     };
 };
 #[derive(Debug, Clone)]
-struct level {
+pub struct level {
     obstacles: Vec<Rectangle>,
     enemies: Vec<Cube>,
     width: u32,
@@ -101,7 +112,7 @@ struct level {
     player: Cube,
 };
 impl level {
-    fn scaleToScreen(&mut self, screen_width: u32, screen_height: u32) {
+    pub fn scaleToScreen(&mut self, screen_width: u32, screen_height: u32) {
         let scale_x = screen_width as f64 / self.width as f64;
         let scale_y = screen_height as f64 / self.height as f64;
         for obstacle in &mut self.obstacles {
@@ -121,13 +132,13 @@ impl level {
         self.player.rect.p2.x *= scale_x;
         self.player.rect.p2.y *= scale_y;
     };
-    fn update(&mut self, dt: f64) {
+    pub fn update(&mut self, dt: f64) {
         for enemy in &mut self.enemies {
             enemy.update(dt);
         };
         self.player.update(dt);
     };
-    fn handleCamera(&self, camera_pos: &Point) {
+    pub fn handleCamera(&self, camera_pos: &Point) {
         for obstacle in &self.obstacles {
             // adjust obstacle position based on camera_pos
             obstacle.p1.x -= camera_pos.x;
@@ -143,7 +154,7 @@ impl level {
         };
         self.draw();
     };
-    fn draw(&self) {
+    pub fn draw(&self) {
         for obstacle in &self.obstacles {
             obstacle.draw();
         };
