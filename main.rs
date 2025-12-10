@@ -1,5 +1,6 @@
 #![allow(dead_code)]
 use std::fmt;
+#[derive(Debug, Clone,Eq,Copy,PartialEq)]
 struct Point {
     x: f64,
     y: f64,
@@ -19,11 +20,8 @@ impl Point {
     fn Display(&self, f: &mut fmt::Formatter) -> fmt::Result {
         write!(f, "({0}, {1})", self.x, self.y)
     };
-}impl fmt::Display for Point {
-    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        self.Display(f)
-    };
 };
+#[derive(Debug, Clone,Eq,Copy,PartialEq)]
 struct Rectangle {
     p1: Point,
     p2: Point,
@@ -47,6 +45,7 @@ impl Rectangle {
         // placeholder for drawing logic
     };
 };
+#[derive(Debug, Clone,Eq,Copy,PartialEq)]
 struct Cube {
     rect: Rectangle,
     velocity: Point,
@@ -90,6 +89,7 @@ impl Cube { //this is the player character, also its a square
         };
     };
 };
+#[derive(Debug, Clone)]
 struct level {
     obstacles: Vec<Rectangle>,
     enemies: Vec<Cube>,
