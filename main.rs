@@ -168,3 +168,23 @@ fn serialize_level(level: &level) -> String {
     // placeholder for serialization logic
     String::from("serialized_level_data")
 };
+
+fn deserialize_level(data: &str) -> level {
+    // placeholder for deserialization logic
+    level {
+        obstacles: Vec::new(),
+        enemies: Vec::new(),
+        width: 100,
+        height: 100,
+        lvlNum: 1,
+        player: Cube {
+            rect: Rectangle {
+                p1: Point::origin(),
+                p2: Point::new(1.0, 1.0),
+                rotation: 0.0,
+            },
+            velocity: Point::origin(),
+            health: 100.0,
+        },
+    }
+};
