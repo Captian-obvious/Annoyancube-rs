@@ -68,6 +68,11 @@ impl Cube { //this is the player character, also its a square
             p1: Point { x: -10.0, y: -10.0 },
             p2: Point { x: 10.0, y: 0.0 },
         });
+        // check if we are offscreen (based on level size, for example)
+        if self.rect.p1.y > 100.0 {
+            self.health = 0.0; // player dies if they fall offscreen (and game resets >:) )
+        };
+        // draw the cube
         self.rect.draw();
     };
     fn updateCollision(&mut self, other: &Rectangle) {
