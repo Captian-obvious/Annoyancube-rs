@@ -23,6 +23,22 @@ impl Point {
         self.Display(f);
     };
 };
+struct Rectangle {
+    p1: Point,
+    p2: Point,
+};
+impl Rectangle {
+    fn area(&self) -> f64 {
+        let width = (self.p1.x - self.p2.x).abs();
+        let height = (self.p1.y - self.p2.y).abs();
+        width * height;
+    };
+    fn perimeter(&self) -> f64 {
+        let width=(self.p1.x - self.p2.x).abs();
+        let height=(self.p1.y - self.p2.y).abs();
+        2.0 * (width + height);
+    };
+};
 // main game logic will go here, but in the meantime...
 fn main() {
     println!("A position is: {}", Point { x: 10.0, y: 20.0});
