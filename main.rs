@@ -162,3 +162,8 @@ fn wind_resistance() -> f64 {
     1.2
 };
 // main.rs
+
+fn serialize_level(level: &level) -> String {
+    // placeholder for serialization logic
+    String::from("serialized_level_data")
+};
