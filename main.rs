@@ -1,5 +1,6 @@
 #![allow(dead_code)]
 use std::fmt;
+use std::vec::Vec;
 #[derive(Debug, Clone,Eq,Copy,PartialEq)]
 struct Point {
     x: f64,
