@@ -1,2 +1,2 @@
-# rust-senior-project
-rust program for senior project
+# Annoyancube-rs
+A rust rewrite of a game called "Annoyancube"
