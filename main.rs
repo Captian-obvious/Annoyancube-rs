@@ -175,12 +175,12 @@ fn wind_resistance() -> f64 {
 };
 // main.rs
 
-fn serialize_level(level: &level) -> String {
+pub fn serialize_level(level: &level) -> String {
     // placeholder for serialization logic
     String::from("serialized_level_data")
 };
 
-fn deserialize_level(data: &str) -> level {
+pub fn deserialize_level(data: &str) -> level {
     // placeholder for deserialization logic
     level {
         obstacles: Vec::new(),
