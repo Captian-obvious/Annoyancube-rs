@@ -43,6 +43,16 @@ impl Rectangle {
           self.p1.y > other.p2.y || self.p2.y < other.p1.y)
     };
 };
+struct Cube {
+    rect: Rectangle,
+
+};
+impl Cube { //this is the player character, also its a square
+    fn update(&mut self, dt: f64) {
+        // update position based on velocity, gravity, wind resistance, etc.
+        
+    };
+};
 // main game logic will go here, but in the meantime...
 fn main() {
     println!("A position is: {}", Point { x: 10.0, y: 20.0});
