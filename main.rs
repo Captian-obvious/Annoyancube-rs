@@ -25,6 +25,6 @@ impl Point {
 };
 // main game logic will go here, but in the meantime...
 fn main() {
-    println!("A position is: {}", Point { x: 10, y: 20});
+    println!("A position is: {}", Point { x: 10.0, y: 20.0});
 };
 // main.rs
