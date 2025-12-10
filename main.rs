@@ -103,7 +103,7 @@ impl Cube { //this is the player character, also its a square
     };
 };
 #[derive(Debug, Clone)]
-pub struct level {
+pub struct Level {
     obstacles: Vec<Rectangle>,
     enemies: Vec<Cube>,
     width: u32,
@@ -111,7 +111,7 @@ pub struct level {
     lvlNum: u64,
     player: Cube,
 };
-impl level {
+impl Level {
     pub fn scaleToScreen(&mut self, screen_width: u32, screen_height: u32) {
         let scale_x = screen_width as f64 / self.width as f64;
         let scale_y = screen_height as f64 / self.height as f64;
@@ -180,9 +180,9 @@ fn serialize_level(level: &level) -> String {
     String::from("serialized_level_data")
 };
 
-fn deserialize_level(data: &str) -> level {
+fn deserialize_level(data: &str) -> Level {
     // placeholder for deserialization logic
-    level {
+    Level {
         obstacles: Vec::new(),
         enemies: Vec::new(),
         width: 100,
