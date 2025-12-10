@@ -188,14 +188,6 @@ fn deserialize_level(data: &str) -> level {
         width: 100,
         height: 100,
         lvlNum: 1,
-        player: Cube {
-            rect: Rectangle {
-                p1: Point::origin(),
-                p2: Point::new(1.0, 1.0),
-                rotation: 0.0,
-            },
-            velocity: Point::origin(),
-            health: 100.0,
-        },
+        player: Cube::create(0.0, 0.0, 10.0),
     }
 };
