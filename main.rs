@@ -87,9 +87,9 @@ impl Cube { //this is the player character, also its a square
 struct level {
     obstacles: Vec<Rectangle>,
     enemies: Vec<Cube>,
-    width: i64,
-    height: i64,
-    lvlNum: i64,
+    width: u32,
+    height: u32,
+    lvlNum: u64,
 };
 impl level {
     fn update(&mut self, dt: f64) {
