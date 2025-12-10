@@ -84,6 +84,27 @@ impl Cube { //this is the player character, also its a square
         };
     };
 };
+struct level {
+    obstacles: Vec<Rectangle>,
+    enemies: Vec<Cube>,
+    width: i64,
+    height: i64,
+};
+impl level {
+    fn update(&mut self, dt: f64) {
+        for enemy in &mut self.enemies {
+            enemy.update(dt);
+        };
+    };
+    fn draw(&self) {
+        for obstacle in &self.obstacles {
+            obstacle.draw();
+        };
+        for enemy in &self.enemies {
+            enemy.rect.draw();
+        };
+    };
+};
 // main game logic will go here, but in the meantime...
 fn main() {
     println!("A position is: {}", Point { x: 10.0, y: 20.0});
