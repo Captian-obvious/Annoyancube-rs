@@ -46,6 +46,7 @@ impl Rectangle {
 struct Cube {
     rect: Rectangle,
     velocity: Point,
+    health: f64,
 };
 impl Cube { //this is the player character, also its a square
     fn update(&mut self, dt: f64) {
