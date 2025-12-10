@@ -66,7 +66,7 @@ impl Cube { //this is the player character, also its a square
     };
     fn updateCollision(&mut self, other: &Rectangle) {
         if self.rect.onCollide(other) {
-            // simple collision response: stop movement
+            // collision response: stop movement depending on direction
             if self.velocity.y < 0.0 {
                 self.velocity.y = 0.0;
                 // reposition cube on top of the other rectangle
