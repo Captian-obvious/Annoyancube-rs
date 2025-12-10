@@ -2,7 +2,7 @@ struct Point {
     x: i32,
     y: i32,
     Display: fn(&self){
-        format!("({}, {})", self.x, self.y)
+        format!("(X={0}, Y={1})", self.x, self.y)
     },
 };
 fn main() {
