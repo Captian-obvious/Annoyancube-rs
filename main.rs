@@ -42,6 +42,9 @@ impl Rectangle {
         !(self.p1.x > other.p2.x || self.p2.x < other.p1.x ||
           self.p1.y > other.p2.y || self.p2.y < other.p1.y)
     };
+    fn draw(&self) {
+        // placeholder for drawing logic
+    };
 };
 struct Cube {
     rect: Rectangle,
