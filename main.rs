@@ -126,6 +126,22 @@ impl level {
         };
         self.player.update(dt);
     };
+    fn handleCamera(&self, camera_pos: &Point) {
+        for obstacle in &self.obstacles {
+            // adjust obstacle position based on camera_pos
+            obstacle.p1.x -= camera_pos.x;
+            obstacle.p1.y -= camera_pos.y;
+            obstacle.p2.x -= camera_pos.x;
+            obstacle.p2.y -= camera_pos.y;
+        };
+        for enemy in &self.enemies {
+            enemy.rect.p1.x -= camera_pos.x;
+            enemy.rect.p1.y -= camera_pos.y;
+            enemy.rect.p2.x -= camera_pos.x;
+            enemy.rect.p2.y -= camera_pos.y;
+        };
+        self.draw();
+    };
     fn draw(&self) {
         for obstacle in &self.obstacles {
             obstacle.draw();
