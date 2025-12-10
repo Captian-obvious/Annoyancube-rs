@@ -54,7 +54,7 @@ pub struct Cube {
     health: f64,
 };
 impl Cube { //this is the player character, also its a square
-    pub fn create(x: f64, y: f64, size: f64) -> Cube {
+    pub static fn create(x: f64, y: f64, size: f64) -> Cube {
         Cube {
             rect: Rectangle {
                 p1: Point { x: x, y: y },
