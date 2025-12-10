@@ -63,10 +63,12 @@ impl Cube { //this is the player character, also its a square
         // apply wind resistance
         self.velocity.x *= wind_resistance().powf(-dt);
         self.velocity.y *= wind_resistance().powf(-dt);
+        // check for collisions with ground (example rectangle)
         self.updateCollision(&Rectangle {
             p1: Point { x: -10.0, y: -10.0 },
             p2: Point { x: 10.0, y: 0.0 },
         });
+        self.rect.draw();
     };
     fn updateCollision(&mut self, other: &Rectangle) {
         if self.rect.onCollide(other) {
