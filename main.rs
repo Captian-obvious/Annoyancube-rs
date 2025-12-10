@@ -50,7 +50,26 @@ struct Cube {
 impl Cube { //this is the player character, also its a square
     fn update(&mut self, dt: f64) {
         // update position based on velocity, gravity, wind resistance, etc.
-
+        self.rect.p1.x += self.velocity.x * dt;
+        self.rect.p1.y += self.velocity.y * dt;
+        self.rect.p2.x += self.velocity.x * dt;
+        self.rect.p2.y += self.velocity.y * dt;
+        // apply gravity
+        self.velocity.y -= gravity() * dt;
+        // apply wind resistance
+        self.velocity.x *= wind_resistance().powf(-dt);
+        self.velocity.y *= wind_resistance().powf(-dt);
+        self.updateCollision(&Rectangle {
+            p1: Point { x: -10.0, y: -10.0 },
+            p2: Point { x: 10.0, y: 0.0 },
+        });
+    };
+    fn updateCollision(&mut self, other: &Rectangle) {
+        if self.rect.onCollide(other) {
+            // simple collision response: stop movement
+            self.velocity.x = 0.0;
+            self.velocity.y = 0.0;
+        };
     };
 };
 // main game logic will go here, but in the meantime...
