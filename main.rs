@@ -20,7 +20,7 @@ impl Point {
     };
 }impl fmt::Display for Point {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        self.Display(f);
+        self.Display(f)
     };
 };
 struct Rectangle {
@@ -31,16 +31,26 @@ impl Rectangle {
     fn area(&self) -> f64 {
         let width = (self.p1.x - self.p2.x).abs();
         let height = (self.p1.y - self.p2.y).abs();
-        width * height;
+        width * height
     };
     fn perimeter(&self) -> f64 {
         let width=(self.p1.x - self.p2.x).abs();
         let height=(self.p1.y - self.p2.y).abs();
-        2.0 * (width + height);
+        2.0 * (width + height)
+    };
+    fn onCollide(&self, other: &Rectangle) -> bool {
+        !(self.p1.x > other.p2.x || self.p2.x < other.p1.x ||
+          self.p1.y > other.p2.y || self.p2.y < other.p1.y)
     };
 };
 // main game logic will go here, but in the meantime...
 fn main() {
     println!("A position is: {}", Point { x: 10.0, y: 20.0});
+};
+fn gravity() -> f64 {
+    9.8
+};
+fn wind_resistance() -> f64 {
+    1.2
 };
 // main.rs
