@@ -96,12 +96,14 @@ struct level {
     width: u32,
     height: u32,
     lvlNum: u64,
+    player: Cube,
 };
 impl level {
     fn update(&mut self, dt: f64) {
         for enemy in &mut self.enemies {
             enemy.update(dt);
         };
+        self.player.update(dt);
     };
     fn draw(&self) {
         for obstacle in &self.obstacles {
