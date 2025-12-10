@@ -45,12 +45,12 @@ impl Rectangle {
 };
 struct Cube {
     rect: Rectangle,
-
+    velocity: Point,
 };
 impl Cube { //this is the player character, also its a square
     fn update(&mut self, dt: f64) {
         // update position based on velocity, gravity, wind resistance, etc.
-        
+
     };
 };
 // main game logic will go here, but in the meantime...
