@@ -89,6 +89,7 @@ struct level {
     enemies: Vec<Cube>,
     width: i64,
     height: i64,
+    lvlNum: i64,
 };
 impl level {
     fn update(&mut self, dt: f64) {
