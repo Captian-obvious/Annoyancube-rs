@@ -175,6 +175,10 @@ fn wind_resistance() -> f64 {
 };
 // main.rs
 
+/*
+level serialization and deserialization functions
+JSON from level struct to string and back
+*/
 fn serialize_level(level: &level) -> String {
     // placeholder for serialization logic
     String::from("serialized_level_data")
