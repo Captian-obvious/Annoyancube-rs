@@ -2,7 +2,7 @@
 use std::fmt;
 use std::vec::Vec;
 use std::collections::HashMap;
-#[derive(Debug, Clone,Eq,Copy,PartialEq)]
+#[derive(Debug, Clone,Copy,PartialEq)]
 pub struct Point {
     x: f64,
     y: f64,
@@ -10,20 +10,20 @@ pub struct Point {
 impl Point {
     pub fn origin() -> Point {
         Point { x: 0.0, y: 0.0 }
-    };
+    }
     pub fn new(x: f64, y: f64) -> Point {
         Point { x: x, y: y };
-    };
+    }
     pub fn distance(&self, other: &Point) -> f64 {
         let dx = self.x - other.x;
         let dy = self.y - other.y;
         (dx * dx + dy * dy).sqrt()
-    };
+    }
     pub fn Display(&self, f: &mut fmt::Formatter) -> fmt::Result {
         write!(f, "({0}, {1})", self.x, self.y)
-    };
+    }
 }
-#[derive(Debug, Clone,Eq,Copy,PartialEq)]
+#[derive(Debug, Clone,Copy,PartialEq)]
 pub struct Rectangle {
     p1: Point,
     p2: Point,
@@ -34,21 +34,21 @@ impl Rectangle {
         let width = (self.p1.x - self.p2.x).abs();
         let height = (self.p1.y - self.p2.y).abs();
         width * height
-    };
+    }
     pub fn perimeter(&self) -> f64 {
         let width=(self.p1.x - self.p2.x).abs();
         let height=(self.p1.y - self.p2.y).abs();
         2.0 * (width + height)
-    };
+    }
     pub fn onCollide(&self, other: &Rectangle) -> bool {
         !(self.p1.x > other.p2.x || self.p2.x < other.p1.x ||
           self.p1.y > other.p2.y || self.p2.y < other.p1.y)
-    };
+    }
     pub fn draw(&self) {
         // placeholder for drawing logic
-    };
+    }
 }
-#[derive(Debug, Clone,Eq,Copy,PartialEq)]
+#[derive(Debug, Clone,Copy,PartialEq)]
 pub struct Cube {
     rect: Rectangle,
     velocity: Point,
@@ -65,7 +65,7 @@ impl Cube { //this is the player character, also its a square
             velocity: Point { x: 0.0, y: 0.0 },
             health: 100.0,
         }
-    };
+    }
     pub fn update(&mut self, dt: f64) {
         // update position based on velocity, gravity, wind resistance, etc.
         self.rect.p1.x += self.velocity.x * dt;
@@ -88,7 +88,7 @@ impl Cube { //this is the player character, also its a square
         };
         // draw the cube
         self.rect.draw();
-    };
+    }
     pub fn updateCollision(&mut self, other: &Rectangle) {
         if self.rect.onCollide(other) {
             // collision response: stop movement depending on direction
@@ -101,7 +101,7 @@ impl Cube { //this is the player character, also its a square
                 self.velocity.x = 0.0;
             };
         };
-    };
+    }
 }
 #[derive(Debug, Clone)]
 pub struct Level {
@@ -133,13 +133,13 @@ impl Level {
         self.player.rect.p1.y *= scale_y;
         self.player.rect.p2.x *= scale_x;
         self.player.rect.p2.y *= scale_y;
-    };
+    }
     pub fn update(&mut self, dt: f64) {
         for enemy in &mut self.enemies {
             enemy.update(dt);
         };
         self.player.update(dt);
-    };
+    }
     pub fn handleCamera(&self, camera_pos: &Point) {
         for obstacle in &self.obstacles {
             // adjust obstacle position based on camera_pos
@@ -155,7 +155,7 @@ impl Level {
             enemy.rect.p2.y -= camera_pos.y;
         };
         self.draw();
-    };
+    }
     pub fn draw(&self) {
         for obstacle in &self.obstacles {
             obstacle.draw();
@@ -163,18 +163,18 @@ impl Level {
         for enemy in &self.enemies {
             enemy.rect.draw();
         };
-    };
+    }
 }
 // main game logic will go here, but in the meantime...
 fn main() {
     println!("A position is: {}", Point { x: 10.0, y: 20.0});
-};
+}
 fn gravity() -> f64 {
     9.8
-};
+}
 fn wind_resistance() -> f64 {
     1.2
-};
+}
 // main.rs
 
 /*
@@ -185,8 +185,7 @@ fn serialize_level(level: &Level) -> String {
     // placeholder for serialization logic
     let level_number = level.lvlNum;
     String::from("serialized")
-};
-
+}
 fn deserialize_level(data: &str) -> Level {
     // placeholder for deserialization logic
     Level {
@@ -197,4 +196,4 @@ fn deserialize_level(data: &str) -> Level {
         lvlNum: 1,
         player: Cube::create(0.0, 0.0, 10.0),
     }
-};
+}
