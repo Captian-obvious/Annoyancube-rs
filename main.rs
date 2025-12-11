@@ -19,6 +19,12 @@ impl Vector2 {
         let dy = self.y - other.y;
         (dx * dx + dy * dy).sqrt()
     }
+    pub fn offset(&self, other: &Vector2) -> Vector2 {
+        Vector2 {
+            x: self.x + other.x,
+            y: self.y + other.y,
+        }
+    }
     pub fn Display(&self, f: &mut fmt::Formatter) -> fmt::Result {
         write!(f, "({0}, {1})", self.x, self.y)
     }
