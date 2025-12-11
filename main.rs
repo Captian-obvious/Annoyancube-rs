@@ -154,14 +154,14 @@ impl Level {
         self.player.update(dt);
     }
     pub fn handleCamera(&self, camera_pos: &Point) {
-        for obstacle in &self.obstacles {
+        for obstacle in &mut self.obstacles {
             // adjust obstacle position based on camera_pos
             obstacle.p1.x -= camera_pos.x;
             obstacle.p1.y -= camera_pos.y;
             obstacle.p2.x -= camera_pos.x;
             obstacle.p2.y -= camera_pos.y;
         };
-        for enemy in &self.enemies {
+        for enemy in &mut self.enemies {
             enemy.rect.p1.x -= camera_pos.x;
             enemy.rect.p1.y -= camera_pos.y;
             enemy.rect.p2.x -= camera_pos.x;
