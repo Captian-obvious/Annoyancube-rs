@@ -180,7 +180,12 @@ impl Level {
 }
 // main game logic will go here, but in the meantime...
 fn main() {
-    println!("A position is: {}", Vector2 { x: 10.0, y: 20.0});
+    let point_a = Vector2::new(10.0, 20.0);
+    let point_b = Vector2::new(30.0, 42.0);
+    let dist = point_a.distance(&point_b);
+    println!("A position is: {}", point_a);
+    println!("B position is: {}", point_b);
+    println!("Distance between A and B is: {}", dist);
 }
 fn gravity() -> f64 {
     9.8
