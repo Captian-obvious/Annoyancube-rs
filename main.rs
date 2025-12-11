@@ -3,18 +3,18 @@ use std::fmt;
 use std::vec::Vec;
 use std::collections::HashMap;
 #[derive(Debug, Clone,Copy,PartialEq)]
-pub struct Point {
+pub struct Vector2 {
     x: f64,
     y: f64,
 }
-impl Point {
-    pub fn origin() -> Point {
-        Point { x: 0.0, y: 0.0 }
+impl Vector2 {
+    pub fn origin() -> Vector2 {
+        Vector2 { x: 0.0, y: 0.0 }
     }
-    pub fn new(x: f64, y: f64) -> Point {
-        Point { x: x, y: y }
+    pub fn new(x: f64, y: f64) -> Vector2 {
+        Vector2 { x: x, y: y }
     }
-    pub fn distance(&self, other: &Point) -> f64 {
+    pub fn distance(&self, other: &Vector2) -> f64 {
         let dx = self.x - other.x;
         let dy = self.y - other.y;
         (dx * dx + dy * dy).sqrt()
@@ -23,22 +23,22 @@ impl Point {
         write!(f, "({0}, {1})", self.x, self.y)
     }
 }
-impl fmt::Display for Point {
+impl fmt::Display for Vector2 {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         self.Display(f)
     }
 }
 #[derive(Debug, Clone,Copy,PartialEq)]
 pub struct Rectangle {
-    p1: Point,
-    p2: Point,
+    p1: Vector2,
+    p2: Vector2,
     rotation: f64,
 }
 impl Rectangle {
     pub fn create(x1: f64, y1: f64, x2: f64, y2: f64) -> Rectangle {
         Rectangle {
-            p1: Point { x: x1, y: y1 },
-            p2: Point { x: x2, y: y2 },
+            p1: Vector2 { x: x1, y: y1 },
+            p2: Vector2 { x: x2, y: y2 },
             rotation: 0.0,
         }
     }
@@ -63,18 +63,18 @@ impl Rectangle {
 #[derive(Debug, Clone,Copy,PartialEq)]
 pub struct Cube {
     rect: Rectangle,
-    velocity: Point,
+    velocity: Vector2,
     health: f64,
 }
 impl Cube { //this is the player character, also its a square
     pub fn create(x: f64, y: f64, size: f64) -> Cube {
         Cube {
             rect: Rectangle {
-                p1: Point { x: x, y: y },
-                p2: Point { x: x + size, y: y + size },
+                p1: Vector2 { x: x, y: y },
+                p2: Vector2 { x: x + size, y: y + size },
                 rotation: 0.0,
             },
-            velocity: Point { x: 0.0, y: 0.0 },
+            velocity: Vector2 { x: 0.0, y: 0.0 },
             health: 100.0,
         }
     }
@@ -91,8 +91,8 @@ impl Cube { //this is the player character, also its a square
         self.velocity.y *= wind_resistance().powf(-dt);
         // check for collisions with ground (example rectangle)
         self.updateCollision(&Rectangle {
-            p1: Point { x: -10.0, y: -10.0 },
-            p2: Point { x: 10.0, y: 0.0 },
+            p1: Vector2 { x: -10.0, y: -10.0 },
+            p2: Vector2 { x: 10.0, y: 0.0 },
             rotation: 0.0,
         });
         // check if we are offscreen (based on level size, for example)
@@ -153,7 +153,7 @@ impl Level {
         };
         self.player.update(dt);
     }
-    pub fn handleCamera(&mut self, camera_pos: &Point) {
+    pub fn handleCamera(&mut self, camera_pos: &Vector2) {
         for obstacle in &mut self.obstacles {
             // adjust obstacle position based on camera_pos
             obstacle.p1.x -= camera_pos.x;
@@ -180,7 +180,7 @@ impl Level {
 }
 // main game logic will go here, but in the meantime...
 fn main() {
-    println!("A position is: {}", Point { x: 10.0, y: 20.0});
+    println!("A position is: {}", Vector2 { x: 10.0, y: 20.0});
 }
 fn gravity() -> f64 {
     9.8
