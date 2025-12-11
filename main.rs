@@ -180,10 +180,6 @@ fn wind_resistance() -> f64 {
 level serialization and deserialization functions
 JSON from level struct to string and back
 */
-fn serialize(map:HashMap<&str, String>) -> String {
-    // placeholder for serialization logic
-    String::new()
-};
 fn serialize_level(level: &Level) -> String {
     // placeholder for serialization logic
     let level_number = level.lvlNum;
