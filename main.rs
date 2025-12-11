@@ -115,7 +115,8 @@ pub struct Level {
 impl Level {
     pub fn scaleToScreen(&mut self, screen_width: u32, screen_height: u32) {
         let scale_x = screen_width as f64 / self.width as f64;
-        let scale_y = screen_height as f64 / self.height as f64;
+        let aspect_ratio = self.width as f64 / self.height as f64;
+        let scale_y = screen_height as f64 / self.height as f64 / aspect_ratio;
         for obstacle in &mut self.obstacles {
             obstacle.p1.x *= scale_x;
             obstacle.p1.y *= scale_y;
