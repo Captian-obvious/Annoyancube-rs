@@ -6,7 +6,7 @@ use std::collections::HashMap;
 pub struct Point {
     x: f64,
     y: f64,
-};
+}
 impl Point {
     pub fn origin() -> Point {
         Point { x: 0.0, y: 0.0 }
@@ -22,13 +22,13 @@ impl Point {
     pub fn Display(&self, f: &mut fmt::Formatter) -> fmt::Result {
         write!(f, "({0}, {1})", self.x, self.y)
     };
-};
+}
 #[derive(Debug, Clone,Eq,Copy,PartialEq)]
 pub struct Rectangle {
     p1: Point,
     p2: Point,
     rotation: f64,
-};
+}
 impl Rectangle {
     pub fn area(&self) -> f64 {
         let width = (self.p1.x - self.p2.x).abs();
@@ -47,13 +47,13 @@ impl Rectangle {
     pub fn draw(&self) {
         // placeholder for drawing logic
     };
-};
+}
 #[derive(Debug, Clone,Eq,Copy,PartialEq)]
 pub struct Cube {
     rect: Rectangle,
     velocity: Point,
     health: f64,
-};
+}
 impl Cube { //this is the player character, also its a square
     pub static fn create(x: f64, y: f64, size: f64) -> Cube {
         Cube {
@@ -102,7 +102,7 @@ impl Cube { //this is the player character, also its a square
             };
         };
     };
-};
+}
 #[derive(Debug, Clone)]
 pub struct Level {
     obstacles: Vec<Rectangle>,
@@ -111,7 +111,7 @@ pub struct Level {
     height: u32,
     lvlNum: u64,
     player: Cube,
-};
+}
 impl Level {
     pub fn scaleToScreen(&mut self, screen_width: u32, screen_height: u32) {
         let scale_x = screen_width as f64 / self.width as f64;
@@ -164,7 +164,7 @@ impl Level {
             enemy.rect.draw();
         };
     };
-};
+}
 // main game logic will go here, but in the meantime...
 fn main() {
     println!("A position is: {}", Point { x: 10.0, y: 20.0});
