@@ -153,7 +153,7 @@ impl Level {
         };
         self.player.update(dt);
     }
-    pub fn handleCamera(&self, camera_pos: &Point) {
+    pub fn handleCamera(&mut self, camera_pos: &Point) {
         for obstacle in &mut self.obstacles {
             // adjust obstacle position based on camera_pos
             obstacle.p1.x -= camera_pos.x;
