@@ -35,6 +35,13 @@ pub struct Rectangle {
     rotation: f64,
 }
 impl Rectangle {
+    pub fn create(x1: f64, y1: f64, x2: f64, y2: f64) -> Rectangle {
+        Rectangle {
+            p1: Point { x: x1, y: y1 },
+            p2: Point { x: x2, y: y2 },
+            rotation: 0.0,
+        }
+    }
     pub fn area(&self) -> f64 {
         let width = (self.p1.x - self.p2.x).abs();
         let height = (self.p1.y - self.p2.y).abs();
