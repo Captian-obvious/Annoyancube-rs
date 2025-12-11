@@ -12,7 +12,7 @@ impl Point {
         Point { x: 0.0, y: 0.0 }
     }
     pub fn new(x: f64, y: f64) -> Point {
-        Point { x: x, y: y };
+        Point { x: x, y: y }
     }
     pub fn distance(&self, other: &Point) -> f64 {
         let dx = self.x - other.x;
@@ -21,6 +21,11 @@ impl Point {
     }
     pub fn Display(&self, f: &mut fmt::Formatter) -> fmt::Result {
         write!(f, "({0}, {1})", self.x, self.y)
+    }
+}
+impl fmt::Display for Point {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+        self.Display(f)
     }
 }
 #[derive(Debug, Clone,Copy,PartialEq)]
