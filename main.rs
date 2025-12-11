@@ -1,6 +1,7 @@
 #![allow(dead_code)]
 use std::fmt;
 use std::vec::Vec;
+use std::collections::HashMap;
 #[derive(Debug, Clone,Eq,Copy,PartialEq)]
 pub struct Point {
     x: f64,
