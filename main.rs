@@ -56,6 +56,12 @@ impl Rectangle {
         !(self.p1.x > other.p2.x || self.p2.x < other.p1.x ||
           self.p1.y > other.p2.y || self.p2.y < other.p1.y)
     }
+    pub fn center(&self) -> Vector2 {
+        Vector2 {
+            x: (self.p1.x + self.p2.x) / 2.0,
+            y: (self.p1.y + self.p2.y) / 2.0,
+        }
+    }
     pub fn draw(&self) {
         // placeholder for drawing logic
     }
