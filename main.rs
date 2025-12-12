@@ -198,6 +198,9 @@ fn main() {
     println!("A position is: {}", point_a);
     println!("B position is: {}", point_b);
     println!("Distance between A and B is: {}", dist);
+    println!("Gravity is: {}", gravity());
+    println!("Wind resistance is: {}", wind_resistance());
+    println!("Cube: {:?}", Cube::create(0.0, 0.0, 10.0));
 }
 fn gravity() -> f64 {
     9.8
