@@ -11,7 +11,7 @@ impl Vector2 {
     pub fn origin() -> Vector2 {
         Vector2 { x: 0.0, y: 0.0 }
     }
-    pub static Vector2:fn new(x: f64, y: f64) -> Vector2 {
+    pub fn new(x: f64, y: f64) -> Vector2 {
         Vector2 { x: x, y: y }
     }
     pub fn distance(&self, other: &Vector2) -> f64 {
