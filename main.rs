@@ -124,6 +124,14 @@ impl Cube { //this is the player character, also its a square
                 self.rect.p2.y = other.p2.y + (self.rect.p2.y - self.rect.p1.y);
             }else if self.velocity.x != 0.0 {
                 self.velocity.x = 0.0;
+                // reposition cube beside the other rectangle
+                if self.rect.p1.x < other.p1.x {
+                    self.rect.p1.x = other.p1.x - (self.rect.p2.x - self.rect.p1.x);
+                    self.rect.p2.x = other.p1.x;
+                } else {
+                    self.rect.p1.x = other.p2.x;
+                    self.rect.p2.x = other.p2.x + (self.rect.p2.x - self.rect.p1.x);
+                }
             };
         };
     }
