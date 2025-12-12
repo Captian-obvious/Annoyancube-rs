@@ -202,6 +202,9 @@ fn main() {
     println!("Wind resistance is: {}", wind_resistance());
     println!("Cube: {:?}", Cube::create(0.0, 0.0, 10.0));
 }
+fn updateRenderLoop() {
+    // placeholder for main game loop logic
+}
 fn gravity() -> f64 {
     9.8
 }
