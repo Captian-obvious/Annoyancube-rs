@@ -1,2 +1,6 @@
+[package]
+name = "annoyancube"
+version = "0.1.0"
+edition = "2025"
 [dependencies]
 bevy = "0.17" # make sure this is the latest version
