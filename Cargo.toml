@@ -4,6 +4,7 @@ version = "0.1.0"
 edition = "2025"
 [dependencies]
 bevy = "0.17" # make sure this is the latest version
+log = { version = "*", features = ["max_level_debug", "release_max_level_warn"] }
 [profile.dev]
 opt-level = 1
 [profile.dev.package."*"]
