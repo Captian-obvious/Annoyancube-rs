@@ -6,6 +6,7 @@ use std::collections::HashMap;
 use super::*;
 use super::phys::*;
 
+#[derive(Component)]
 pub struct Rectangle {
     p1: Vector2,
     p2: Vector2,
