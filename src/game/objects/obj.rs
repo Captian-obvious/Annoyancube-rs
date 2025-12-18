@@ -1,5 +1,8 @@
 #![allow(dead_code)]
 use bevy::prelude::*;
+use std::fmt;
+use std::vec::Vec;
+use std::collections::HashMap;
 
 mod obj {
     #[derive(Component)]
