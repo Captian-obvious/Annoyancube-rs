@@ -2,7 +2,7 @@
 use bevy::prelude::*;
 mod game;
 use std::fmt;
-use game::*;
+use crate::game::*;
 // AND IT BEGINS!
 
 fn main() {
