@@ -1,6 +1,5 @@
 #![allow(dead_code)]
 use bevy::prelude::*;
-mod game;
 use std::fmt;
 use crate::game::*;
 // AND IT BEGINS!
