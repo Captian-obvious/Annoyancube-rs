@@ -1,5 +1,6 @@
 #![allow(dead_code)]
 
+mod components;
 use bevy::window::{Window, WindowId, WindowMode};
 
 /// A builder for creating and configuring a Bevy window.
