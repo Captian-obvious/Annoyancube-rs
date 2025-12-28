@@ -2,6 +2,7 @@
 use bevy::prelude::*;
 use std::fmt;
 use crate::game::*;
+use crate::window::*;
 // AND IT BEGINS!
 
 fn main() {
