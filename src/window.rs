@@ -22,7 +22,8 @@ impl WindowBuilder {
     }
 
     /// Sets the resolution of the window.
-    pub fn with_resolution(mut self, resolution: WindowResolution) -> Self {
+    pub fn with_resolution(mut self, width, height) -> Self {
+        let resolution = WindowResolution::new(width, height);
         self.window.resolution = resolution;
         self
     }
