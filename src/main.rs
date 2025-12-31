@@ -11,10 +11,15 @@ let mut primaryWindow=WindowBuilder::new()
 fn main() {
     App::new()
         .add_systems(Startup, setup)
+        .add_systems(Update, gameUpdate)
         .run();
 };
 
 fn setup() {
     println!("Hello, Bevy!");
     primaryWindow.show();
+};
+
+fn gameUpdate(){
+    
 };
