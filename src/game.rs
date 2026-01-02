@@ -60,3 +60,7 @@ pub mod systems {
         commands.spawn().insert(level);
     }
 }
+
+pub fn update_game_state() {
+    // Placeholder for game state update logic
+}

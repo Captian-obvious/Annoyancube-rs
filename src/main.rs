@@ -21,5 +21,5 @@ fn setup() {
 };
 
 fn gameUpdate(){
-    
+    update_game_state();
 };
