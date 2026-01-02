@@ -15,12 +15,16 @@ pub struct GameObject {
 }
 impl GameObject {
     pub fn new(id: u32, name: &str, position: Vector2, velocity: Vector2) -> Self {
-        GameObject {
+        Self {
             id,
             name: name.to_string(),
             position,
             velocity,
         }
+    }
+    pub fn update_position(&mut self, delta_time: f32) {
+        self.position.x += self.velocity.x * delta_time;
+        self.position.y += self.velocity.y * delta_time;
     }
 }
 #[derive(Component)]
