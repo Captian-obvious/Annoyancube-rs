@@ -1,6 +1,5 @@
 #![allow(dead_code)]
 
-mod components;
 use bevy::window::{Window, WindowId, WindowMode, WindowResolution};
 
 /// A builder for creating and configuring a Bevy window.
@@ -22,7 +21,7 @@ impl WindowBuilder {
     }
 
     /// Sets the resolution of the window.
-    pub fn with_resolution(mut self, width, height) -> Self {
+    pub fn with_resolution(mut self, width: u32, height: u32) -> Self {
         let resolution = WindowResolution::new(width, height);
         self.window.resolution = resolution;
         self
