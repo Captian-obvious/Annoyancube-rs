@@ -72,9 +72,11 @@ pub struct GameState{
     fn setup_system(mut commands: Commands,mut _meshes: ResMut<Assets<Mesh>>,mut _materials: ResMut<Assets<ColorMaterial>>) {
         // pre-window setup logic
         commands.spawn(Camera2d);
+
     }
     fn on_update_system(mut _commands: Commands,mut _meshes: ResMut<Assets<Mesh>>,mut _materials: ResMut<Assets<ColorMaterial>>) {
         // Game logic
+        
     }
     pub fn setup(&mut self) {
         let app_ref: &mut App = self.get_app();
@@ -82,6 +84,11 @@ pub struct GameState{
         app_ref.add_systems(Update, Self::on_update_system);
     }
     pub fn start_game(&mut self){
-        // Start logic
+        if self.has_started {
+            return;
+        } else {
+            self.has_started=true;
+            // Start game logic
+        }
     }
 }
