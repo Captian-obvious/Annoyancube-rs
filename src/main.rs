@@ -5,18 +5,20 @@ mod window;
 use crate::window::*;
 // AND IT BEGINS!
 fn main() {
+    let mut window_plugin=WindowPlugin {
+        primary_window: Some(setup_window()),
+        ..Default::default()
+    };
+    window_plugin.primary_window.as_mut().unwrap().title="\"Slight\" Annoyancube".to_string();
     App::new()
         .add_systems(Startup, setup)
         .add_systems(Update, game_update)
-        .add_plugins(DefaultPlugins.set(WindowPlugin {
-            primary_window: Some(setup_window()),
-            ..Default::default()
-        }))
+        .add_plugins(DefaultPlugins.set(window_plugin))
         .run();
 }
 
 fn setup() {
-    println!("Hello, Bevy!");
+    // pre-window setup logic goes here
 }
 fn setup_window()->Window {
     let primary_window:Window=WindowBuilder::new()
