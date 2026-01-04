@@ -1,6 +1,6 @@
 #![allow(dead_code)]
 use bevy::prelude::*;
-use bevy::window::{Window, WindowMode};
+use bevy::window::{Window};
 
 pub struct GameState{
     score: u32,
@@ -25,7 +25,7 @@ pub struct GameState{
     }
     // Gets the window from the reference
     pub fn get_window(&self) -> &mut Window {
-        if (self.window.is_null()) {
+        if self.window.is_null() {
             panic!("Window pointer is null!");
         };
         // Safety: We ensure that the window pointer is valid before dereferencing (its required to be valid for the struct to initialize)
@@ -35,5 +35,10 @@ pub struct GameState{
     pub fn set_window_title(&mut self, title: String) {
         let window_ref: &mut Window = self.get_window();
         window_ref.title = title;
+    }
+
+    // Gets the current score
+    pub fn get_score(&self) -> u32 {
+        self.score
     }
 }
