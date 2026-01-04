@@ -14,7 +14,6 @@ fn main() {
         ..Default::default()
     };
     let mut game_state=GameState::new(window_plugin.primary_window.as_mut().unwrap());
-    game_state.set_window_title("\"Slight\" Annoyancube".to_string());
     let mut binding = App::new();
     let mut app=binding
         .add_plugins(DefaultPlugins.set(window_plugin))

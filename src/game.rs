@@ -79,5 +79,6 @@ pub struct GameState{
         let app_ref: &mut App = self.get_app();
         app_ref.add_systems(Startup, Self::setup_system);
         app_ref.add_systems(Update, Self::on_update_system);
+        self.set_window_title("\"Slight\" Annoyancube".to_string());
     }
 }
