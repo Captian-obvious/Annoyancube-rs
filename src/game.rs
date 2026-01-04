@@ -7,6 +7,7 @@ pub struct GameState{
     score: u32,
     level: u32,
     window: *mut Window,
+    has_started: bool,
     pub app: Option<*mut App>,
 } impl GameState {
     pub fn new(window: &mut Window) -> Self {
@@ -68,17 +69,19 @@ pub struct GameState{
         let _window_ref: &mut Window = self.get_window();
         // canvas
     }
-    fn setup_system(mut commands: Commands,mut meshes: ResMut<Assets<Mesh>>,mut materials: ResMut<Assets<ColorMaterial>>) {
-        // pre-window setup logic goes here
+    fn setup_system(mut commands: Commands,mut _meshes: ResMut<Assets<Mesh>>,mut _materials: ResMut<Assets<ColorMaterial>>) {
+        // pre-window setup logic
         commands.spawn(Camera2d);
     }
-    fn on_update_system() {
-        // Game logic (now) goes here
+    fn on_update_system(mut _commands: Commands,mut _meshes: ResMut<Assets<Mesh>>,mut _materials: ResMut<Assets<ColorMaterial>>) {
+        // Game logic
     }
     pub fn setup(&mut self) {
         let app_ref: &mut App = self.get_app();
         app_ref.add_systems(Startup, Self::setup_system);
         app_ref.add_systems(Update, Self::on_update_system);
-        self.set_window_title("\"Slight\" Annoyancube".to_string());
+    }
+    pub fn start_game(&mut self){
+        // Start logic
     }
 }
