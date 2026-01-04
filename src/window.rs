@@ -1,16 +1,15 @@
 #![allow(dead_code)]
 
-use bevy::window::{Window, WindowId, WindowMode, WindowResolution};
+use bevy::window::{Window, WindowMode, WindowResolution};
 
 /// A builder for creating and configuring a Bevy window.
 pub struct WindowBuilder {
     window: Window,
-}
-impl WindowBuilder {
+} impl WindowBuilder {
     /// Creates a new `WindowBuilder` with default settings.
     pub fn new() -> Self {
         Self {
-            window: Window::new(WindowId::primary()),
+            window: Window::default(),
         }
     }
 
@@ -27,15 +26,21 @@ impl WindowBuilder {
         self
     }
 
-    /// Sets the window mode (e.g., Windowed, Fullscreen).
-    pub fn with_mode(mut self, mode: WindowMode) -> Self {
-        self.window.mode = mode;
-        self
-    }
-
     // Sets whether the window is resizable.
     pub fn is_resizable(mut self, resizable: bool) -> Self {
         self.window.resizable = resizable;
+        self
+    }
+
+    // Sets whether the window is visible.
+    pub fn is_visible(mut self, visible: bool) -> Self {
+        self.window.visible = visible;
+        self
+    }
+
+    // Sets the default window mode. (e.g., Windowed, Fullscreen)
+    pub fn in_mode(mut self, mode: WindowMode) -> Self {
+        self.window.mode=mode;
         self
     }
 
