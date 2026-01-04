@@ -1,70 +1,30 @@
 #![allow(dead_code)]
 use bevy::prelude::*;
-use std::vec::Vec;
-pub mod obj;
-pub mod phys;
-use phys::*;
-use obj::*;
+use bevy::window::{Window, WindowMode};
 
-#[derive(Component)]
-pub struct GameObject {
-    pub id: u32,
-    pub name: String,
-    pub position: Vector2,
-    pub velocity: Vector2,
-}
-impl GameObject {
-    pub fn new(id: u32, name: &str, position: Vector2, velocity: Vector2) -> Self {
+pub struct GameState{
+    score: u32,
+    level: u32,
+    window: Option<Window>
+} impl GameState {
+    pub fn new(window: &mut Window) -> Self {
         Self {
-            id,
-            name: name.to_string(),
-            position,
-            velocity,
+            score: 0,
+            level: 1,
+            window:Some(window.clone()),
         }
     }
-    pub fn update_position(&mut self, delta_time: f32) {
-        self.position.x += self.velocity.x * delta_time;
-        self.position.y += self.velocity.y * delta_time;
+    // Increases the score by a given number of points
+    pub fn increase_score(&mut self, points: u32) {
+        self.score += points;
     }
-}
-#[derive(Component)]
-pub struct Level {
-    pub name: String,
-    pub objects: Vec<Rectangle>,
-    pub number: u32,
-}
-impl Level {
-    pub fn new(name: &str, number: u32) -> Self {
-        Level {
-            name: name.to_string(),
-            objects: Vec::new(),
-            number,
-        }
+    // Advances to the next level
+    pub fn next_level(&mut self) {
+        self.level += 1;
     }
-    pub fn add_object(&mut self, object: Rectangle) {
-        self.objects.push(object);
+    // Sets the window title of the attached window
+    pub fn set_window_title(&mut self, title: String) {
+        let window: &mut Window=self.window.as_mut().unwrap();
+        window.title = title;
     }
-    pub fn get_objects(&self) -> &Vec<Rectangle> {
-        &self.objects
-    }
-    pub fn get_number(&self) -> u32 {
-        self.number
-    }
-    pub fn get_object_count(&self) -> usize {
-        self.objects.len()
-    }
-    pub fn get_next_id(&self) -> u32 {
-        self.objects.len() as u32 + 1
-    }
-}
-pub mod systems {
-    use super::*;
-    pub fn load_level(mut commands: Commands) {
-        let level = Level::new("Level 1", 1);
-        commands.spawn().insert(level);
-    }
-}
-
-pub fn update_game_state() {
-    // Placeholder for game state update logic
 }
