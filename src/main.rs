@@ -2,15 +2,18 @@
 use bevy::prelude::*;
 use bevy::window::{Window, WindowMode, WindowPlugin};
 mod window;
+mod game;
 use crate::window::*;
+use crate::game::*;
 // AND IT BEGINS!
 fn main() {
+    let window=setup_window();
     let mut window_plugin=WindowPlugin {
-        primary_window: Some(setup_window()),
+        primary_window: Some(window),
         ..Default::default()
     };
-    let window: &mut Window=window_plugin.primary_window.as_mut().unwrap();
-    window.title="\"Slight\" Annoyancube".to_string();
+    let mut game_state=GameState::new(window_plugin.primary_window.as_mut().unwrap());
+    game_state.set_window_title("\"Slight\" Annoyancube".to_string());
     App::new()
         .add_systems(Startup, setup)
         .add_systems(Update, game_update)
