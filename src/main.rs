@@ -9,7 +9,8 @@ fn main() {
         primary_window: Some(setup_window()),
         ..Default::default()
     };
-    window_plugin.primary_window.as_mut().unwrap().title="\"Slight\" Annoyancube".to_string();
+    let window: &mut Window=window_plugin.primary_window.as_mut().unwrap();
+    window.title="\"Slight\" Annoyancube".to_string();
     App::new()
         .add_systems(Startup, setup)
         .add_systems(Update, game_update)
