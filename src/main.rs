@@ -36,7 +36,3 @@ fn setup_window()->Window {
     .build();
     primary_window
 }
-
-fn game_update() {
-    // Game logic goes here
-}
