@@ -24,7 +24,7 @@ pub struct GameState{
         self.level += 1;
     }
     // Gets the window from the reference
-    pub fn get_window(&self) -> &mut Window {
+    fn get_window(&self) -> &mut Window {
         if self.window.is_null() {
             panic!("Window pointer is null!");
         };
@@ -40,5 +40,16 @@ pub struct GameState{
     // Gets the current score
     pub fn get_score(&self) -> u32 {
         self.score
+    }
+
+    // Gets the current level
+    pub fn get_level(&self) -> u32 {
+        self.level
+    }
+
+    // Initializes canvas of window
+    pub fn initialize_canvas(&mut self) {
+        let _window_ref: &mut Window = self.get_window();
+        // canvas
     }
 }
