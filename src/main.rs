@@ -1,6 +1,7 @@
 #![allow(dead_code)]
 use bevy::prelude::*;
 use bevy::window::{Window, WindowMode, WindowPlugin};
+use bevy::sprite_render::{Wireframe2dPlugin};
 mod window;
 mod game;
 use crate::window::*;
@@ -14,16 +15,18 @@ fn main() {
     };
     let mut game_state=GameState::new(window_plugin.primary_window.as_mut().unwrap());
     game_state.set_window_title("\"Slight\" Annoyancube".to_string());
-    App::new()
-        .add_systems(Startup, setup)
-        .add_systems(Update, game_update)
+    let mut binding = App::new();
+    let mut app=binding
         .add_plugins(DefaultPlugins.set(window_plugin))
-        .run();
+        .add_plugins(
+            #[cfg(not(target_arch = "wasm32"))]
+            Wireframe2dPlugin::default()
+        );
+    game_state.add_app(&mut app);
+    game_state.setup();
+    app.run();
 }
 
-fn setup() {
-    // pre-window setup logic goes here
-}
 fn setup_window()->Window {
     let primary_window:Window=WindowBuilder::new()
     .with_title("Annoyancube")

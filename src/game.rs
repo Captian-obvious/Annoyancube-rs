@@ -2,17 +2,24 @@
 use bevy::prelude::*;
 use bevy::window::{Window};
 
+#[derive(Default)]
 pub struct GameState{
     score: u32,
     level: u32,
     window: *mut Window,
+    pub app: Option<*mut App>,
 } impl GameState {
     pub fn new(window: &mut Window) -> Self {
         Self {
             score: 0,
             level: 1,
             window:window,
+            ..Default::default()
         }
+    }
+
+    pub fn add_app(&mut self,app:&mut App){
+        self.app=Some(app);
     }
 
     // Increases the score by a given number of points
@@ -30,6 +37,15 @@ pub struct GameState{
         };
         // Safety: We ensure that the window pointer is valid before dereferencing (its required to be valid for the struct to initialize)
         unsafe { &mut *self.window }
+    }
+
+    // returns the currently attached app
+    fn get_app(&self) -> &mut App {
+        if self.app.is_none() {
+            panic!("App pointer is null!");
+        };
+        // Safety: We ensure that the app pointer is valid before dereferencing (its required to be valid for the struct to initialize)
+        unsafe { &mut **self.app.as_ref().unwrap() }
     }
     // Sets the window title of the attached window
     pub fn set_window_title(&mut self, title: String) {
@@ -51,5 +67,17 @@ pub struct GameState{
     pub fn initialize_canvas(&mut self) {
         let _window_ref: &mut Window = self.get_window();
         // canvas
+    }
+    fn setup_system(mut commands: Commands,mut meshes: ResMut<Assets<Mesh>>,mut materials: ResMut<Assets<ColorMaterial>>) {
+        // pre-window setup logic goes here
+        commands.spawn(Camera2d);
+    }
+    fn on_update_system() {
+        // Game logic (now) goes here
+    }
+    pub fn setup(&mut self) {
+        let app_ref: &mut App = self.get_app();
+        app_ref.add_systems(Startup, Self::setup_system);
+        app_ref.add_systems(Update, Self::on_update_system);
     }
 }
