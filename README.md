@@ -1,5 +1,5 @@
 # Annoyancube-rs
-A rust rewrite of a game called "Annoyancube"
+A rust written game called "Annoyancube",
 
 A "fun" game involving a cube (square), that can't jump
 
