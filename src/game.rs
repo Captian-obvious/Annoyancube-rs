@@ -72,7 +72,7 @@ pub struct GameState{
     fn setup_system(mut commands: Commands,mut meshes: ResMut<Assets<Mesh>>,mut materials: ResMut<Assets<ColorMaterial>>) {
         // pre-window setup logic
         commands.spawn(Camera2d);
-
+        // demo, exploding rectangle
     }
     fn on_update_system(mut _commands: Commands,mut _meshes: ResMut<Assets<Mesh>>,mut _materials: ResMut<Assets<ColorMaterial>>) {
         // Game logic
