@@ -69,7 +69,7 @@ pub struct GameState{
         let _window_ref: &mut Window = self.get_window();
         // canvas
     }
-    fn setup_system(mut commands: Commands,mut _meshes: ResMut<Assets<Mesh>>,mut _materials: ResMut<Assets<ColorMaterial>>) {
+    fn setup_system(mut commands: Commands,mut meshes: ResMut<Assets<Mesh>>,mut materials: ResMut<Assets<ColorMaterial>>) {
         // pre-window setup logic
         commands.spawn(Camera2d);
 
