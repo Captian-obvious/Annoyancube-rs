@@ -80,7 +80,7 @@ pub struct GameState{
         // pre-window setup logic
         commands.spawn(Camera2d);
         // demo, circle
-        let color=Color::hsl(0,.95,.7);
+        let color=Color::hsl(0.0,.95,.7);
         let shape=meshes.add(Circle::new(50.0));
         commands.spawn((
             Mesh2d(shape),
