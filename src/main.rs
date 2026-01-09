@@ -18,12 +18,11 @@ fn main() {
     let mut binding = App::new();
     let mut app=binding
         .add_plugins(
-            DefaultPlugins,
             #[cfg(not(target_arch = "wasm32"))]
-            window_plugin
+            DefaultPlugins.set(window_plugin)
         )
         .add_plugins(
-            DefaultPlugins,
+            DefaultPlugins
             #[cfg(not(target_arch = "wasm32"))]
             Wireframe2dPlugin::default()
         );
