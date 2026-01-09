@@ -94,9 +94,9 @@ pub struct GameState{
     }
     fn on_update_system(mut _commands: Commands,mut _meshes: ResMut<Assets<Mesh>>,mut _materials: ResMut<Assets<ColorMaterial>>) {
         /* CONTROLS */
-        
-        /*GAME MAIN LOGIC LOOP*/
 
+        /*GAME MAIN LOGIC LOOP*/
+        
     }
     pub fn setup(&mut self) {
         let app_ref: &mut App = self.get_app();
