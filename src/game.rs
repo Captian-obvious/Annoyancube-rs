@@ -93,7 +93,9 @@ pub struct GameState{
         ));
     }
     fn on_update_system(mut _commands: Commands,mut _meshes: ResMut<Assets<Mesh>>,mut _materials: ResMut<Assets<ColorMaterial>>) {
-        // Game logic
+        /* CONTROLS */
+
+        /*GAME MAIN LOGIC LOOP*/
         
     }
     pub fn setup(&mut self) {
