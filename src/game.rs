@@ -79,7 +79,18 @@ pub struct GameState{
     fn setup_system(mut commands: Commands,mut meshes: ResMut<Assets<Mesh>>,mut materials: ResMut<Assets<ColorMaterial>>) {
         // pre-window setup logic
         commands.spawn(Camera2d);
-        // demo, exploding rectangle
+        // demo, circle
+        let color=Color::hsl(0,.95,.7);
+        let shape=meshes.add(Circle::new(50.0));
+        commands.spawn((
+            Mesh2d(shape),
+            Mesh2dMaterial(materials.add(color)),
+            Transform::from_xyz(
+                0.0,
+                0.0,
+                0.0
+            ),
+        ));
     }
     fn on_update_system(mut _commands: Commands,mut _meshes: ResMut<Assets<Mesh>>,mut _materials: ResMut<Assets<ColorMaterial>>) {
         // Game logic
