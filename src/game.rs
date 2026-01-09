@@ -2,6 +2,12 @@
 use bevy::prelude::*;
 use bevy::window::{Window};
 
+/*
+LEVEL IDEA:
+Cannot Jump, must get to top of level.
+
+*/
+
 #[derive(Default)]
 pub struct GameState{
     score: u32,
