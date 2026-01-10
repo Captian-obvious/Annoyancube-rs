@@ -6,6 +6,7 @@ mod game;
 use crate::window::*;
 use crate::game::*;
 // AND IT BEGINS!
+
 fn main() {
     let window=setup_window();
     let mut window_plugin=WindowPlugin {
