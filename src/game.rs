@@ -2,7 +2,7 @@
 use bevy::prelude::*;
 use bevy::window::{Window};
 use std::vec::Vec;
-mod control;
+pub mod control;
 
 /*
 LEVEL IDEA:
