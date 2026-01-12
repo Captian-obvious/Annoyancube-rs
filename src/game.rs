@@ -3,6 +3,7 @@ use bevy::prelude::*;
 use bevy::window::{Window};
 use std::vec::Vec;
 pub mod control;
+use crate::game::control::*;
 
 /*
 LEVEL IDEA:
