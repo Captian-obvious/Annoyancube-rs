@@ -5,7 +5,7 @@ use std::vec::Vec;
 
 pub struct Controller{
     key_code:i32,
-}impl Controller{
+} impl Controller {
     pub fn new(&self){
         Self {
             key_code:0,
