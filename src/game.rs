@@ -3,6 +3,8 @@ use bevy::prelude::*;
 use bevy::window::{Window};
 use std::vec::Vec;
 pub mod control;
+mod serialization;
+use crate::serialization::*;
 use crate::game::control::*;
 
 /*
@@ -111,5 +113,23 @@ pub struct GameState{
             self.has_started=true;
             // Start game logic
         }
+    }
+}
+
+#[derive(Component)]
+pub struct Level {
+    pub number: u32,
+    pub description: String,
+    pub objects: Vec<Entity>,
+} impl Level {
+    pub fn new(number: u32, description: String)->Self {
+        Self {
+            number,
+            description,
+            objects: Vec::new(),
+        }
+    }
+    pub fn load_object(&mut self, entity: Entity){
+        self.objects.push(entity);
     }
 }

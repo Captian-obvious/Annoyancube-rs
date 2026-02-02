@@ -3,8 +3,10 @@ use bevy::prelude::*;
 use bevy::window::{Window, WindowMode, WindowPlugin};
 mod window;
 mod game;
+mod serialization;
 use crate::window::*;
 use crate::game::*;
+use crate::serialization::*;
 // AND IT BEGINS!
 
 fn main() {
